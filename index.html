@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oath of Iron | A Medieval Theological Thriller</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'oath-bg': '#0B0B0D',
+              'oath-surface': '#121216',
+              'oath-surface-light': '#17171C',
+              'oath-gold': '#D3B15C',
+              'oath-crimson': '#C1123A',
+              'oath-crimson-bright': '#D41445',
+              'oath-text': '#B8B3AA',
+              'oath-border': '#24242A',
+            },
+            fontFamily: {
+              serif: ['Cinzel', 'serif'],
+              body: ['Inter', 'sans-serif'],
+              display: ['Playfair Display', 'serif'],
+            },
+            letterSpacing: {
+              widest: '.25em',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #0B0B0D;
+        color: #B8B3AA;
+        font-family: 'Inter', sans-serif;
+      }
+      .cinematic-vignette {
+        background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.4) 100%);
+      }
+      .gold-gradient-text {
+        background: linear-gradient(to bottom, #D3B15C, #A68B46);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .gold-border-glow:hover {
+        border-color: #D3B15C;
+        box-shadow: 0 0 15px rgba(211, 177, 92, 0.2);
+      }
+      .crimson-glow:hover {
+        box-shadow: 0 0 20px rgba(193, 18, 58, 0.4);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
