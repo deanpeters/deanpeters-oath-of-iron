@@ -2,13 +2,18 @@
 import React from 'react';
 
 interface JourneyTileProps {
+  id: string;
   image: string;
   number: string;
   title: string;
+  onSelect: (id: string) => void;
 }
 
-const JourneyTile: React.FC<JourneyTileProps> = ({ image, number, title }) => (
-  <div className="relative group rounded-xl overflow-hidden border border-oath-border aspect-video cursor-pointer">
+const JourneyTile: React.FC<JourneyTileProps> = ({ id, image, number, title, onSelect }) => (
+  <div 
+    onClick={() => onSelect(id)}
+    className="relative group rounded-xl overflow-hidden border border-oath-border aspect-video cursor-pointer"
+  >
     <img 
       src={image} 
       alt={title} 
@@ -23,7 +28,11 @@ const JourneyTile: React.FC<JourneyTileProps> = ({ image, number, title }) => (
   </div>
 );
 
-const JourneySection: React.FC = () => {
+interface JourneySectionProps {
+  onSelectJourney: (id: string) => void;
+}
+
+const JourneySection: React.FC<JourneySectionProps> = ({ onSelectJourney }) => {
   return (
     <section id="journey" className="space-y-12">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -42,34 +51,46 @@ const JourneySection: React.FC = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <JourneyTile 
+          id="beast-in-the-hall"
           image="https://picsum.photos/id/1018/800/600"
           number="I"
           title="Beast in the Hall"
+          onSelect={onSelectJourney}
         />
         <JourneyTile 
+          id="coffin-at-the-gate"
           image="https://picsum.photos/id/1015/800/600"
           number="II"
           title="Coffin at the Gate"
+          onSelect={onSelectJourney}
         />
         <JourneyTile 
+          id="ash-at-st-ives"
           image="https://picsum.photos/id/1040/800/600"
           number="III"
           title="Ash at St. Ives"
+          onSelect={onSelectJourney}
         />
         <JourneyTile 
+          id="abbey-breach"
           image="https://picsum.photos/id/1043/800/600"
           number="IV"
           title="Abbey Breach"
+          onSelect={onSelectJourney}
         />
         <JourneyTile 
+          id="the-captured-prize"
           image="https://picsum.photos/id/1044/800/600"
           number="V"
           title="The Captured Prize"
+          onSelect={onSelectJourney}
         />
         <JourneyTile 
+          id="the-princes-claim"
           image="https://picsum.photos/id/1045/800/600"
           number="VI"
           title="The Prince's Claim"
+          onSelect={onSelectJourney}
         />
       </div>
     </section>

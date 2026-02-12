@@ -2,7 +2,12 @@
 import React from 'react';
 import { ArrowRight, BookOpen } from 'lucide-react';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onOpenPrologue: () => void;
+  onExploreLore: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onOpenPrologue, onExploreLore }) => {
   return (
     <section className="relative pt-40 pb-20 lg:pt-56 lg:pb-32 overflow-hidden">
       {/* Background Ambience */}
@@ -26,11 +31,17 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <button className="bg-oath-crimson hover:bg-oath-crimson-bright text-white px-8 py-4 rounded-md font-bold uppercase tracking-widest text-sm transition-all flex items-center justify-center gap-2 crimson-glow group">
+            <button 
+              onClick={onOpenPrologue}
+              className="bg-oath-crimson hover:bg-oath-crimson-bright text-white px-8 py-4 rounded-md font-bold uppercase tracking-widest text-sm transition-all flex items-center justify-center gap-2 crimson-glow group"
+            >
               Read the Prologue
               <BookOpen className="w-4 h-4 group-hover:scale-110 transition-transform" />
             </button>
-            <button className="border border-oath-gold/40 hover:border-oath-gold text-oath-gold px-8 py-4 rounded-md font-bold uppercase tracking-widest text-sm transition-all hover:bg-oath-gold/5 flex items-center justify-center gap-2">
+            <button 
+              onClick={onExploreLore}
+              className="border border-oath-gold/40 hover:border-oath-gold text-oath-gold px-8 py-4 rounded-md font-bold uppercase tracking-widest text-sm transition-all hover:bg-oath-gold/5 flex items-center justify-center gap-2"
+            >
               Explore the Lore
               <ArrowRight className="w-4 h-4" />
             </button>
