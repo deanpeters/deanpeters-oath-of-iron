@@ -2,14 +2,19 @@
 import React from 'react';
 
 interface CharacterCardProps {
+  id: string;
   image: string;
   name: string;
   role: string;
   description: string;
+  onSelect: (id: string) => void;
 }
 
-const CharacterCard: React.FC<CharacterCardProps> = ({ image, name, role, description }) => (
-  <div className="relative group bg-oath-surface border border-oath-border rounded-xl overflow-hidden flex flex-col h-full transition-all duration-300 hover:border-oath-gold/30">
+const CharacterCard: React.FC<CharacterCardProps> = ({ id, image, name, role, description, onSelect }) => (
+  <div 
+    onClick={() => onSelect(id)}
+    className="relative group bg-oath-surface border border-oath-border rounded-xl overflow-hidden flex flex-col h-full transition-all duration-300 hover:border-oath-gold/30 cursor-pointer"
+  >
     <div className="relative aspect-[3/4] overflow-hidden">
       <img 
         src={image} 
@@ -30,7 +35,11 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ image, name, role, descri
   </div>
 );
 
-const CastSection: React.FC = () => {
+interface CastSectionProps {
+  onSelectCharacter: (id: string) => void;
+}
+
+const CastSection: React.FC<CastSectionProps> = ({ onSelectCharacter }) => {
   return (
     <section id="cast" className="space-y-16">
       <div className="text-center space-y-4">
@@ -42,22 +51,28 @@ const CastSection: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         <CharacterCard 
+          id="gemria"
           image="https://picsum.photos/id/64/800/1200"
           name="Gemria"
           role="The Protagonist"
           description="A woman with a hidden past, navigating a web of lies to protect—or ignite—something truly holy."
+          onSelect={onSelectCharacter}
         />
         <CharacterCard 
+          id="lescovarre"
           image="https://picsum.photos/id/177/800/1200"
           name="Lescovarre"
           role="The Antagonist"
           description="Master of whispers and court intrigue. To him, the stakes are not souls, but the very survival of nations."
+          onSelect={onSelectCharacter}
         />
         <CharacterCard 
+          id="grizmund"
           image="https://picsum.photos/id/338/800/1200"
           name="Grizmund"
           role="The Catalyst"
           description="The iron fist of faith. His devotion is as unyielding as the blade he carries in the King's name."
+          onSelect={onSelectCharacter}
         />
       </div>
     </section>
