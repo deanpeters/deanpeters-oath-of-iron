@@ -37,9 +37,10 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ id, image, name, role, de
 
 interface CastSectionProps {
   onSelectCharacter: (id: string) => void;
+  onViewAllCast?: () => void;
 }
 
-const CastSection: React.FC<CastSectionProps> = ({ onSelectCharacter }) => {
+const CastSection: React.FC<CastSectionProps> = ({ onSelectCharacter, onViewAllCast }) => {
   return (
     <section id="cast" className="space-y-16">
       <div className="text-center space-y-4">
@@ -74,6 +75,16 @@ const CastSection: React.FC<CastSectionProps> = ({ onSelectCharacter }) => {
           description="The iron fist of faith. His devotion is as unyielding as the blade he carries in the King's name."
           onSelect={onSelectCharacter}
         />
+      </div>
+
+      {/* Narrative Hook Button */}
+      <div className="flex justify-center pt-8">
+        <button 
+          onClick={onViewAllCast}
+          className="border-2 border-oath-gold text-oath-gold hover:bg-oath-gold hover:text-oath-bg px-10 py-4 rounded-md font-bold uppercase tracking-widest text-sm transition-all duration-300"
+        >
+          The Cast of the Kingdom
+        </button>
       </div>
     </section>
   );

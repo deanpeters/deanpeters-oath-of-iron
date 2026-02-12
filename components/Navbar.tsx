@@ -2,7 +2,12 @@
 import React, { useState, useEffect } from 'react';
 import { Shield } from 'lucide-react';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onNavigateJourney?: () => void;
+  onNavigateCast?: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onNavigateJourney, onNavigateCast }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -21,16 +26,26 @@ const Navbar: React.FC = () => {
         {/* Left: Brand */}
         <div className="flex items-center gap-3">
           <Shield className="w-6 h-6 text-oath-crimson fill-oath-crimson" />
-          <span className="font-serif text-lg tracking-widest text-oath-gold uppercase font-bold">
+          <a href="#" className="font-serif text-lg tracking-widest text-oath-gold uppercase font-bold">
             Oath of Iron
-          </span>
+          </a>
         </div>
 
         {/* Center: Nav Links */}
         <div className="hidden md:flex items-center gap-10">
-          <a href="#journey" className="text-xs tracking-widest text-oath-text/70 hover:text-oath-gold uppercase transition-colors">The Journey</a>
-          <a href="#cast" className="text-xs tracking-widest text-oath-text/70 hover:text-oath-gold uppercase transition-colors">The Cast</a>
-          <a href="#journey" className="text-xs tracking-widest text-oath-text/70 hover:text-oath-gold uppercase transition-colors">The Map</a>
+          <button 
+            onClick={() => onNavigateJourney ? onNavigateJourney() : window.location.hash = '#/journey'}
+            className="text-xs tracking-widest text-oath-text/70 hover:text-oath-gold uppercase transition-colors"
+          >
+            The Journey
+          </button>
+          <button 
+            onClick={() => onNavigateCast ? onNavigateCast() : window.location.hash = '#/cast'}
+            className="text-xs tracking-widest text-oath-text/70 hover:text-oath-gold uppercase transition-colors"
+          >
+            The Cast
+          </button>
+          <a href="#keys" className="text-xs tracking-widest text-oath-text/70 hover:text-oath-gold uppercase transition-colors">The Lore</a>
         </div>
 
         {/* Right: CTA */}

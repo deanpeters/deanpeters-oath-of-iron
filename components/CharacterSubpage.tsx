@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ChevronLeft, Shield } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 
 interface CharacterData {
   id: string;
@@ -18,8 +18,8 @@ interface CharacterData {
 const characters: Record<string, CharacterData> = {
   gemria: {
     id: 'gemria',
-    name: 'Gemria',
-    role: 'The Protagonist',
+    name: 'Princess Gemria MacKendree',
+    role: 'THE PROTAGONIST',
     image: 'https://picsum.photos/id/64/800/1200',
     affiliation: 'The Hidden Lineage',
     status: 'Active',
@@ -34,8 +34,8 @@ Her journey is not one of glory, but of survival and the heavy cost of truth. As
   },
   lescovarre: {
     id: 'lescovarre',
-    name: 'Lescovarre',
-    role: 'The Antagonist',
+    name: 'Prince Phillipe Lescovarre',
+    role: 'THE ANTAGONIST',
     image: 'https://picsum.photos/id/177/800/1200',
     affiliation: 'Council of Whispers',
     status: 'High Chancellor',
@@ -49,7 +49,7 @@ He believes that order can only be maintained through absolute control and that 
   grizmund: {
     id: 'grizmund',
     name: 'Grizmund',
-    role: 'The Catalyst',
+    role: 'THE HUNTER',
     image: 'https://picsum.photos/id/338/800/1200',
     affiliation: 'Order of the Iron Shield',
     status: 'Knight Commander',
@@ -59,6 +59,62 @@ He believes that order can only be maintained through absolute control and that 
     biography: `Grizmund is the physical manifestation of the Kingdom's ancient laws. As the last Knight Commander of a forgotten order, his loyalty is to the lineage of iron, not the politics of the day. His unexpected encounter with Gemria serves as the catalyst for the entire story, as he recognizes a familiar fire in her eyes that he hasn't seen in decades.
 
 His choice to protect her sets off a chain reaction that forces the Kingdom into open conflict, forcing everyone to choose between the safety of the present and the justice of the past.`
+  },
+  luke: {
+    id: 'luke',
+    name: 'Prince Luke MacKendree',
+    role: 'THE SCHOLAR',
+    image: 'https://picsum.photos/id/101/800/1200',
+    affiliation: 'The MacKendree Exile',
+    status: 'Monk / Scholar',
+    weapon: 'Forbidden Vellum & Faith',
+    traits: ['Scholarly', 'Observant', 'Pious'],
+    pullQuote: 'Gemria’s youngest brother and primary companion during the Act 2 pursuit.',
+    biography: `Prince Luke MacKendree is the spiritual and intellectual pulse of the family. Unlike his brothers, his strength is found not in the weight of a sword, but in the weight of the word. Having taken vows in the quiet scripts of the northern abbey, he was thrust into the Schism when his sister Gemria arrived at his gates with the Iron Seal.
+
+Throughout the pursuit of Act 2, Luke serves as Gemria's constant companion and conscience. His ability to navigate the complex history of the Church led him to Cardinal Graysen, from whom he secured the vital family document that proves their legitimacy. He believes that God writes history with the hands of the faithful, and he is determined to ensure the MacKendree chapter is not closed by a tyrant's ink.`
+  },
+  daniel: {
+    id: 'daniel',
+    name: 'Prince Daniel MacKendree',
+    role: 'THE HEIR',
+    image: 'https://picsum.photos/id/222/800/1200',
+    affiliation: 'The MacKendree Exile',
+    status: 'Crown Prince (Exile)',
+    weapon: 'Claymore & Duty',
+    traits: ['Stalwart', 'Burdened', 'Protective'],
+    pullQuote: 'The sturdy eldest brother leading the MacKendree family in exile.',
+    biography: `As the eldest son of the MacKendree line, Daniel carries the heavy mantle of leadership while his father is held for ransom. Known for his fiery red hair and unyielding spirit, he is the rock upon which the exiled family leans. However, Daniel struggles internally with a perceived 'softness'—a fear that he is not the warrior-king the times demand.
+
+His leadership is put to the ultimate test during the daring rescue at Thrushkill. It is there that Daniel realizes true kingship is not about the absence of failure, but the presence of duty. He represents the burden of earthly leadership, navigating the impossible space between protecting his kin and restoring a throne that the world seems to have forgotten.`
+  },
+  falco: {
+    id: 'falco',
+    name: 'Thomas Falco',
+    role: 'THE LOYAL KNIGHT',
+    image: 'https://picsum.photos/id/250/800/1200',
+    affiliation: 'Loyalists',
+    status: 'Knight / Spy',
+    weapon: 'Longsword & Shadow',
+    traits: ['Weary', 'Devoted', 'Conflict-torn'],
+    pullQuote: 'A weary but devoted protector of the royal family.',
+    biography: `Thomas Falco is a man who has seen too much blood for one lifetime. A veteran of the border wars, he now serves as a weary but devoted protector of the royal family. Operating in the gray spaces of the conflict, Falco acts as a spy and buffer, using his deep knowledge of Lescovarre's forces to stay one step ahead of the hunt.
+
+His loyalty is unquestionable, but his soul is tired. His primary internal conflict stems from a secret love for Emily, a woman whose life he cannot guarantee in this storm of kings. Falco represents the countless soldiers caught in the crossfire of lineage—the men who pay the personal price for the oaths they swear to those above them.`
+  },
+  judar: {
+    id: 'judar',
+    name: 'Sheikh Judar',
+    role: 'THE UNEXPECTED ALLY',
+    image: 'https://picsum.photos/id/111/800/1200',
+    affiliation: 'Sikkina',
+    status: 'Sheikh',
+    weapon: 'Scimitar & Desert Wind',
+    traits: ['Strategic', 'Honorable', 'Formidable'],
+    pullQuote: 'The leader of Sikkina and a powerful Saracen leader who initially appears as a threat.',
+    biography: `Initially appearing as a threat from the burning sands of Sikkina, Sheikh Judar is a powerful Saracen leader whose reputation for raiding caravans precedes him. He is a master of the desert, a man of mystery who values honor above gold. When the MacKendrees find themselves in his territory, the clash of cultures seems inevitable.
+
+However, Judar recognizes in Gemria and her brothers a shared struggle against a common, greater corruption. His eventual transition from hunter to unexpected ally marks a turning point in the narrative. He represents the theme of cross-faith collaboration, proving that the lineage of iron is a bond that can bridge even the widest divides of faith and geography.`
   }
 };
 
@@ -133,7 +189,7 @@ const CharacterSubpage: React.FC<CharacterSubpageProps> = ({ characterId, onBack
               </div>
             </div>
 
-            <h1 className="text-6xl lg:text-8xl font-serif text-oath-gold tracking-tight leading-none">
+            <h1 className="text-6xl lg:text-7xl font-serif text-oath-gold tracking-tight leading-none">
               {character.name}
             </h1>
             

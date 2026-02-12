@@ -12,6 +12,8 @@ import LoreDossierSubpage from './components/LoreDossierSubpage';
 import JourneySnapshotSubpage from './components/JourneySnapshotSubpage';
 import PrologueSubpage from './components/PrologueSubpage';
 import LoreArchiveSubpage from './components/LoreArchiveSubpage';
+import JourneyHubSubpage from './components/JourneyHubSubpage';
+import CastHubSubpage from './components/CastHubSubpage';
 
 const App: React.FC = () => {
   const [selectedCharacterId, setSelectedCharacterId] = useState<string | null>(null);
@@ -19,48 +21,40 @@ const App: React.FC = () => {
   const [selectedJourneyId, setSelectedJourneyId] = useState<string | null>(null);
   const [isPrologueVisible, setIsPrologueVisible] = useState(false);
   const [selectedArchiveKey, setSelectedArchiveKey] = useState<string | null>(null);
+  const [isJourneyHubVisible, setIsJourneyHubVisible] = useState(false);
+  const [isCastHubVisible, setIsCastHubVisible] = useState(false);
 
   // Sync hash with state for deep linking
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
-      if (hash.startsWith('#/cast/')) {
+      
+      // Clean up states before setting new one to avoid visual glitches
+      setSelectedCharacterId(null);
+      setSelectedLoreId(null);
+      setSelectedJourneyId(null);
+      setIsPrologueVisible(false);
+      setSelectedArchiveKey(null);
+      setIsJourneyHubVisible(false);
+      setIsCastHubVisible(false);
+
+      if (hash === '#/cast') {
+        setIsCastHubVisible(true);
+      } else if (hash.startsWith('#/cast/')) {
         setSelectedCharacterId(hash.replace('#/cast/', ''));
-        setSelectedLoreId(null);
-        setSelectedJourneyId(null);
-        setIsPrologueVisible(false);
-        setSelectedArchiveKey(null);
       } else if (hash.startsWith('#/lore/')) {
         setSelectedLoreId(hash.replace('#/lore/', ''));
-        setSelectedCharacterId(null);
-        setSelectedJourneyId(null);
-        setIsPrologueVisible(false);
-        setSelectedArchiveKey(null);
       } else if (hash.startsWith('#/key/')) {
         setSelectedArchiveKey(hash.replace('#/key/', ''));
-        setSelectedLoreId(null);
-        setSelectedCharacterId(null);
-        setSelectedJourneyId(null);
-        setIsPrologueVisible(false);
+      } else if (hash === '#/journey') {
+        setIsJourneyHubVisible(true);
       } else if (hash.startsWith('#/journey/')) {
         setSelectedJourneyId(hash.replace('#/journey/', ''));
-        setSelectedCharacterId(null);
-        setSelectedLoreId(null);
-        setIsPrologueVisible(false);
-        setSelectedArchiveKey(null);
       } else if (hash === '#/prologue') {
         setIsPrologueVisible(true);
-        setSelectedCharacterId(null);
-        setSelectedLoreId(null);
-        setSelectedJourneyId(null);
-        setSelectedArchiveKey(null);
-      } else {
-        setSelectedCharacterId(null);
-        setSelectedLoreId(null);
-        setSelectedJourneyId(null);
-        setIsPrologueVisible(false);
-        setSelectedArchiveKey(null);
       }
+      
+      window.scrollTo(0, 0);
     };
 
     window.addEventListener('hashchange', handleHashChange);
@@ -70,127 +64,59 @@ const App: React.FC = () => {
 
   const handleBackToLanding = () => {
     window.location.hash = '';
-    setSelectedCharacterId(null);
-    setSelectedLoreId(null);
-    setSelectedJourneyId(null);
-    setIsPrologueVisible(false);
-    setSelectedArchiveKey(null);
   };
 
   const handleSelectCharacter = (id: string) => {
     window.location.hash = `#/cast/${id}`;
-    setSelectedCharacterId(id);
-    setSelectedLoreId(null);
-    setSelectedJourneyId(null);
-    setIsPrologueVisible(false);
-    setSelectedArchiveKey(null);
-    window.scrollTo(0, 0);
   };
 
   const handleSelectLore = (id: string) => {
     window.location.hash = `#/lore/${id}`;
-    setSelectedLoreId(id);
-    setSelectedCharacterId(null);
-    setSelectedJourneyId(null);
-    setIsPrologueVisible(false);
-    setSelectedArchiveKey(null);
-    window.scrollTo(0, 0);
   };
 
   const handleSelectJourney = (id: string) => {
     window.location.hash = `#/journey/${id}`;
-    setSelectedJourneyId(id);
-    setSelectedCharacterId(null);
-    setSelectedLoreId(null);
-    setIsPrologueVisible(false);
-    setSelectedArchiveKey(null);
-    window.scrollTo(0, 0);
   };
 
   const handleOpenPrologue = () => {
     window.location.hash = `#/prologue`;
-    setIsPrologueVisible(true);
-    setSelectedCharacterId(null);
-    setSelectedLoreId(null);
-    setSelectedJourneyId(null);
-    setSelectedArchiveKey(null);
-    window.scrollTo(0, 0);
   };
 
   const handleExploreLore = () => {
     window.location.hash = `#/key/relics`;
-    setSelectedArchiveKey('relics');
-    setSelectedCharacterId(null);
-    setSelectedLoreId(null);
-    setSelectedJourneyId(null);
-    setIsPrologueVisible(false);
-    window.scrollTo(0, 0);
   };
 
-  if (selectedArchiveKey) {
-    return (
-      <div className="min-h-screen bg-oath-iron relative selection:bg-oath-crimson selection:text-white">
-        <div className="fixed inset-0 pointer-events-none cinematic-vignette opacity-50 z-0" />
-        <div className="relative z-10">
-          <LoreArchiveSubpage loreId={selectedArchiveKey} onBack={handleBackToLanding} />
-          <Footer />
-        </div>
-      </div>
-    );
-  }
+  const handleOpenJourneyHub = () => {
+    window.location.hash = `#/journey`;
+  };
 
-  if (isPrologueVisible) {
-    return (
-      <div className="min-h-screen bg-oath-iron relative selection:bg-oath-crimson selection:text-white">
-        <div className="fixed inset-0 pointer-events-none cinematic-vignette opacity-50 z-0" />
-        <div className="relative z-10">
-          <PrologueSubpage onBack={handleBackToLanding} />
-          <Footer />
-        </div>
-      </div>
-    );
-  }
+  const handleOpenCastHub = () => {
+    window.location.hash = `#/cast`;
+  };
 
-  if (selectedCharacterId) {
-    return (
-      <div className="min-h-screen bg-oath-iron relative selection:bg-oath-crimson selection:text-white">
-        <div className="fixed inset-0 pointer-events-none cinematic-vignette opacity-50 z-0" />
-        <div className="relative z-10">
-          <CharacterSubpage 
-            characterId={selectedCharacterId} 
-            onBack={handleBackToLanding} 
-            onSelectCharacter={handleSelectCharacter}
-          />
-          <Footer />
-        </div>
-      </div>
-    );
-  }
+  // Render Strategy: Conditional rendering based on high-level navigation state
+  const renderSubpage = () => {
+    if (selectedArchiveKey) return <LoreArchiveSubpage loreId={selectedArchiveKey} onBack={handleBackToLanding} />;
+    if (isPrologueVisible) return <PrologueSubpage onBack={handleBackToLanding} />;
+    if (isJourneyHubVisible) return <JourneyHubSubpage onBack={handleBackToLanding} onSelectEvent={handleSelectJourney} />;
+    if (isCastHubVisible) return <CastHubSubpage onBack={handleBackToLanding} onSelectCharacter={handleSelectCharacter} />;
+    if (selectedCharacterId) return <CharacterSubpage characterId={selectedCharacterId} onBack={handleOpenCastHub} onSelectCharacter={handleSelectCharacter} />;
+    if (selectedLoreId) return <LoreDossierSubpage loreId={selectedLoreId} onBack={handleBackToLanding} />;
+    if (selectedJourneyId) return <JourneySnapshotSubpage journeyId={selectedJourneyId} onBack={handleOpenJourneyHub} />;
+    
+    return null;
+  };
 
-  if (selectedLoreId) {
-    return (
-      <div className="min-h-screen bg-oath-iron relative selection:bg-oath-crimson selection:text-white">
-        <div className="fixed inset-0 pointer-events-none cinematic-vignette opacity-50 z-0" />
-        <div className="relative z-10">
-          <LoreDossierSubpage 
-            loreId={selectedLoreId} 
-            onBack={handleBackToLanding} 
-          />
-          <Footer />
-        </div>
-      </div>
-    );
-  }
+  const subpage = renderSubpage();
 
-  if (selectedJourneyId) {
+  if (subpage) {
     return (
       <div className="min-h-screen bg-oath-iron relative selection:bg-oath-crimson selection:text-white">
         <div className="fixed inset-0 pointer-events-none cinematic-vignette opacity-50 z-0" />
-        <div className="relative z-10">
-          <JourneySnapshotSubpage 
-            journeyId={selectedJourneyId} 
-            onBack={handleBackToLanding} 
-          />
+        <div className="relative z-10 flex flex-col min-h-screen">
+          <div className="flex-grow">
+            {subpage}
+          </div>
           <Footer />
         </div>
       </div>
@@ -202,14 +128,24 @@ const App: React.FC = () => {
       <div className="fixed inset-0 pointer-events-none cinematic-vignette opacity-50 z-0" />
       
       <div className="relative z-10 flex flex-col">
-        <Navbar />
+        <Navbar 
+          onNavigateJourney={handleOpenJourneyHub} 
+          onNavigateCast={handleOpenCastHub}
+        />
         
         <main>
-          <Hero onOpenPrologue={handleOpenPrologue} onExploreLore={handleExploreLore} />
+          <Hero 
+            onOpenPrologue={handleOpenPrologue} 
+            onExploreLore={handleExploreLore} 
+            onViewJourney={handleOpenJourneyHub}
+          />
           
           <div className="max-w-7xl mx-auto px-6 lg:px-12 space-y-32 lg:space-y-48 py-24">
             <KeysSection onSelectLore={handleSelectLore} />
-            <CastSection onSelectCharacter={handleSelectCharacter} />
+            <CastSection 
+              onSelectCharacter={handleSelectCharacter} 
+              onViewAllCast={handleOpenCastHub} 
+            />
             <JourneySection onSelectJourney={handleSelectJourney} />
             <FooterCTA />
           </div>
