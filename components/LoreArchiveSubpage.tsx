@@ -127,7 +127,7 @@ const LoreArchiveSubpage: React.FC<LoreArchiveSubpageProps> = ({ loreId, onBack 
         <article className="max-w-4xl mx-auto space-y-16 pb-32">
           <header className="space-y-4">
             <span className="text-oath-crimson text-sm tracking-[0.4em] font-black uppercase">Lore Dossier</span>
-            <h1 className="text-5xl lg:text-[5rem] font-serif text-oath-gold leading-[1.1] gold-gradient-text tracking-tight uppercase font-black">
+            <h1 className="text-5xl lg:text-[5rem] font-serif text-oath-gold leading-[1.1] gold-gradient-text tracking-tighter">
               {data.title.split(' ')[0]} <br /> {data.title.split(' ')[1] || ''}
             </h1>
             <p className="text-3xl lg:text-4xl font-narrative italic text-oath-gold/60 font-light mt-12 leading-relaxed">
