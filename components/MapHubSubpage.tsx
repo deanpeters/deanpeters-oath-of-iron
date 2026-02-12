@@ -27,7 +27,7 @@ const mapRegistry: LocationSector[] = [
     lat: 55.6,
     lng: -4.5,
     strategicControl: 'Prince Phillipe Lescovarre',
-    geographicAnalogue: 'Scottish Lowlands / Borderlands',
+    geographicAnalogue: 'Scottish Lowlands / Borderlands (55.6° N, 4.5° W)',
     intel: 'Once the beacon of the MacKendree line, it is now a den of dark thoughts where Lescovarre executes his own captains for failure.',
     tacticalNote: 'The site of Princess Gemria’s initial escape, setting the entire pursuit in motion.',
     image: 'https://picsum.photos/id/1041/900/1600'
@@ -41,7 +41,7 @@ const mapRegistry: LocationSector[] = [
     lat: 55.4,
     lng: -4.6,
     strategicControl: 'Contested (Lescovarre occupation vs. Underground Resistance)',
-    geographicAnalogue: 'Scottish Lowlands, South of Iverleigh',
+    geographicAnalogue: 'Scottish Lowlands, South of Iverleigh (55.4° N, 4.6° W)',
     intel: 'The physician Jonas used a "third casket" in a funeral wagon to smuggle Gemria past the village gates.',
     tacticalNote: 'The resistance utilized a secret passage from the Abbey to evade Grizmund’s forces during the raid.',
     image: 'https://picsum.photos/id/1015/900/1600'
@@ -55,7 +55,7 @@ const mapRegistry: LocationSector[] = [
     lat: 45.6,
     lng: 5.9,
     strategicControl: 'Neutral / Cardinal Graysen',
-    geographicAnalogue: 'Southern France / Northern Italy analogue',
+    geographicAnalogue: 'Southern France / Northern Italy analogue (45.6° N, 5.9° E)',
     intel: 'The location of the archives where Prince Luke successfully secured the document proving the family claim.',
     tacticalNote: 'Site of the spear duel where Grizmund successfully captured Gemria despite her spirited defense.',
     image: 'https://picsum.photos/id/1040/900/1600'
@@ -69,7 +69,7 @@ const mapRegistry: LocationSector[] = [
     lat: 44.0,
     lng: 4.0,
     strategicControl: 'Prince Phillipe Lescovarre',
-    geographicAnalogue: 'Marshlands',
+    geographicAnalogue: 'Marshlands (44.0° N, 4.0° E)',
     intel: 'The fortress reflects Lescovarre\'s inner rot; he uses a "Trinity" scourge here to attempt to force Gemria’s submission.',
     tacticalNote: 'The MacKendrees executed a daring rescue involving a crossbow bolt and rope, allowing Gemria to slide to safety.',
     image: 'https://picsum.photos/id/1043/900/1600'
@@ -83,7 +83,7 @@ const mapRegistry: LocationSector[] = [
     lat: 31.6,
     lng: -8.0,
     strategicControl: 'Sheikh Judar',
-    geographicAnalogue: 'Maghreb (North Africa) analogue',
+    geographicAnalogue: 'Maghreb (North Africa) analogue (31.6° N, 8.0° W)',
     intel: 'Sheikh Judar is known to raid caravans and maintains a hidden force of assassins.',
     tacticalNote: 'Grizmund earned Judar\'s begrudging respect by identifying an assassin during their parley.',
     image: 'https://picsum.photos/id/1044/900/1600'
@@ -97,7 +97,7 @@ const mapRegistry: LocationSector[] = [
     lat: 28.0,
     lng: -10.0,
     strategicControl: 'Saracen Tribes / The Masked Leader',
-    geographicAnalogue: 'Deep Sahara / Sinai analogue',
+    geographicAnalogue: 'Deep Sahara / Sinai analogue (28.0° N, 10.0° W)',
     intel: 'These warriors represent the "White Lion" prophecy—unexpected allies rather than obstacles.',
     tacticalNote: 'The unveiling of Gemria\'s true identity occurred here when the leader removed her monk\'s hood.',
     image: 'https://picsum.photos/id/1045/900/1600'
@@ -285,13 +285,13 @@ const MapHubSubpage: React.FC<MapHubSubpageProps> = ({ onBack }) => {
                   </div>
 
                   {/* Bottom Level: The Intel Box - Spanning Under Image & Info */}
-                  <div className="max-w-[780px] bg-black/40 border border-white/5 p-10 rounded-2xl space-y-8 shadow-inner">
-                    <p className="text-oath-text/80 text-2xl font-narrative leading-relaxed">
+                  <div className="w-full bg-black/40 border border-white/5 p-10 rounded-2xl space-y-8 shadow-inner">
+                    <p className="text-oath-text/80 text-3xl font-narrative leading-relaxed">
                       {loc.intel}
                     </p>
-                    <div className="flex gap-6 pt-6 border-t border-white/5">
-                      <span className="text-oath-crimson font-black text-sm tracking-widest uppercase shrink-0">Tactical Note:</span>
-                      <p className="text-oath-cream text-xl lg:text-2xl italic font-narrative leading-relaxed">
+                    <div className="pt-6 border-t border-white/5">
+                      <p className="text-oath-cream text-2xl lg:text-3xl italic font-narrative leading-relaxed">
+                        <span className="text-oath-crimson font-black text-[14px] tracking-[0.3em] uppercase mr-4 not-italic font-body">Tactical Note:</span>
                         {loc.tacticalNote}
                       </p>
                     </div>

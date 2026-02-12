@@ -99,13 +99,13 @@ const JourneyHubSubpage: React.FC<JourneyHubSubpageProps> = ({ onBack, onSelectE
             Return Home
           </button>
           <div className="h-px w-8 bg-oath-border" />
-          <span className="text-xs uppercase tracking-widest text-oath-gold font-bold">Chronicle of 1387</span>
+          <span className="text-xs uppercase tracking-widest text-oath-gold font-bold">Chronicle of 'The Kingdom'</span>
         </nav>
 
         {/* 1A. The Chronicle Header */}
         <header className="mb-32 space-y-8 animate-in fade-in slide-in-from-top-4 duration-700">
           <h1 className="text-6xl md:text-8xl font-serif font-black text-oath-gold uppercase tracking-tighter leading-[0.9] gold-gradient-text">
-            The Chronicle <br className="hidden md:block" /> of 1387
+            The Chronicle <br className="hidden md:block" /> of 'The Kingdom'
           </h1>
           <p className="max-w-2xl font-narrative text-2xl lg:text-3xl italic text-oath-cream/70 leading-relaxed">
             This temporal guide serves as a tactical briefing of the lineage’s progression. Navigate the history of iron through the strictly ordered time-series below.
@@ -162,7 +162,7 @@ const JourneyHubSubpage: React.FC<JourneyHubSubpageProps> = ({ onBack, onSelectE
                     </p>
                   </div>
                   
-                  <p className="text-oath-cream/70 text-lg font-narrative leading-relaxed max-w-xl">
+                  <p className="text-oath-cream/70 text-2xl font-narrative leading-relaxed max-w-xl">
                     {event.longDesc}
                   </p>
 

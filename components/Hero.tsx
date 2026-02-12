@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight, BookOpen, Clock, Map as MapIcon } from 'lucide-react';
+import { ArrowRight, BookOpen, Clock, Scroll } from 'lucide-react';
 
 interface HeroProps {
   onOpenPrologue: () => void;
@@ -41,11 +41,11 @@ const Hero: React.FC<HeroProps> = ({ onOpenPrologue, onExploreLore, onViewJourne
               <Clock className="w-4 h-4 group-hover:scale-110 transition-transform" />
             </button>
             <button 
-              onClick={onViewMap}
+              onClick={onExploreLore}
               className="border-2 border-oath-gold/60 hover:border-oath-gold text-oath-gold px-8 py-4 rounded-md font-bold uppercase tracking-widest text-sm transition-all hover:bg-oath-surface flex items-center justify-center gap-2 group"
             >
-              The Map
-              <MapIcon className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+              Explore the Lore
+              <Scroll className="w-4 h-4 group-hover:rotate-12 transition-transform" />
             </button>
           </div>
           
@@ -57,13 +57,17 @@ const Hero: React.FC<HeroProps> = ({ onOpenPrologue, onExploreLore, onViewJourne
               <BookOpen className="w-4 h-4" />
               Read Prologue
             </button>
-            <button 
-              onClick={onExploreLore}
-              className="text-oath-gold text-xs tracking-[0.3em] font-bold uppercase flex items-center gap-3 hover:gap-5 transition-all w-fit"
-            >
-              Explore the Dossier Archive
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            
+            {/* 
+              Toggled off for future exploration 
+              <button 
+                onClick={onExploreLore}
+                className="text-oath-gold text-xs tracking-[0.3em] font-bold uppercase flex items-center gap-3 hover:gap-5 transition-all w-fit"
+              >
+                Explore the Dossier Archive
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            */}
           </div>
         </div>
 

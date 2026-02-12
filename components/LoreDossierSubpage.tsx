@@ -149,7 +149,7 @@ const LoreDossierSubpage: React.FC<LoreDossierSubpageProps> = ({ loreId, onBack 
                 <h3 className="font-serif text-oath-gold text-lg tracking-widest uppercase shrink-0">Historical Context</h3>
                 <div className="h-px w-full bg-oath-gold/10" />
               </div>
-              <p className="font-narrative text-xl text-oath-cream/90 leading-loose">
+              <p className="font-narrative text-3xl text-oath-cream/90 leading-loose">
                 {data.historicalContext}
               </p>
             </section>
@@ -160,7 +160,7 @@ const LoreDossierSubpage: React.FC<LoreDossierSubpageProps> = ({ loreId, onBack 
                 <h3 className="font-serif text-oath-gold text-lg tracking-widest uppercase shrink-0">Cultural Implications</h3>
                 <div className="h-px w-full bg-oath-gold/10" />
               </div>
-              <p className="font-narrative text-xl text-oath-cream/90 leading-loose">
+              <p className="font-narrative text-3xl text-oath-cream/90 leading-loose">
                 {data.culturalImplications}
               </p>
             </section>
@@ -171,7 +171,7 @@ const LoreDossierSubpage: React.FC<LoreDossierSubpageProps> = ({ loreId, onBack 
                 <h3 className="font-serif text-oath-gold text-lg tracking-widest uppercase shrink-0">Geographical Presence</h3>
                 <div className="h-px w-full bg-oath-gold/10" />
               </div>
-              <p className="font-narrative text-xl text-oath-cream/90 leading-loose">
+              <p className="font-narrative text-3xl text-oath-cream/90 leading-loose">
                 {data.geographicalPresence}
               </p>
             </section>
@@ -185,7 +185,7 @@ const LoreDossierSubpage: React.FC<LoreDossierSubpageProps> = ({ loreId, onBack 
                 </div>
                 <div className="w-full h-px bg-oath-crimson/10" />
               </div>
-              <p className="font-narrative text-xl text-oath-cream/80 leading-relaxed italic">
+              <p className="font-narrative text-2xl text-oath-cream/80 leading-relaxed italic">
                 {data.scriptureExpansion}
               </p>
             </section>

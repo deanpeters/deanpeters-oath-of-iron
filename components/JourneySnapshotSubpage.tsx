@@ -161,7 +161,7 @@ const JourneySnapshotSubpage: React.FC<JourneySnapshotSubpageProps> = ({ journey
           <div className="space-y-12">
             {/* The Context Section */}
             <div className="prose prose-invert max-w-none">
-              <p className="font-narrative text-xl text-oath-cream/90 leading-loose">
+              <p className="font-narrative text-3xl text-oath-cream/90 leading-loose">
                 {data.context}
               </p>
             </div>
