@@ -198,8 +198,9 @@ const CharacterSubpage: React.FC<CharacterSubpageProps> = ({ characterId, onBack
             </p>
           </header>
 
+          {/* Biography Body Text - INCREASED FONT SIZE */}
           <div className="prose prose-invert max-w-none">
-            <div className="font-narrative text-xl text-oath-cream leading-loose space-y-8 whitespace-pre-wrap opacity-90">
+            <div className="font-narrative text-2xl lg:text-3xl text-oath-cream leading-relaxed lg:leading-loose space-y-8 whitespace-pre-wrap opacity-90">
               {character.biography}
             </div>
           </div>

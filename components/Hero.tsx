@@ -1,14 +1,15 @@
 
 import React from 'react';
-import { ArrowRight, BookOpen, Clock } from 'lucide-react';
+import { ArrowRight, BookOpen, Clock, Map as MapIcon } from 'lucide-react';
 
 interface HeroProps {
   onOpenPrologue: () => void;
   onExploreLore: () => void;
   onViewJourney: () => void;
+  onViewMap?: () => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ onOpenPrologue, onExploreLore, onViewJourney }) => {
+const Hero: React.FC<HeroProps> = ({ onOpenPrologue, onExploreLore, onViewJourney, onViewMap }) => {
   return (
     <section className="relative pt-40 pb-20 lg:pt-56 lg:pb-32 overflow-hidden">
       {/* Background Ambience */}
@@ -40,21 +41,30 @@ const Hero: React.FC<HeroProps> = ({ onOpenPrologue, onExploreLore, onViewJourne
               <Clock className="w-4 h-4 group-hover:scale-110 transition-transform" />
             </button>
             <button 
-              onClick={onOpenPrologue}
-              className="border border-oath-border hover:border-oath-gold/40 text-oath-text px-8 py-4 rounded-md font-bold uppercase tracking-widest text-sm transition-all hover:bg-oath-surface flex items-center justify-center gap-2"
+              onClick={onViewMap}
+              className="border-2 border-oath-gold/60 hover:border-oath-gold text-oath-gold px-8 py-4 rounded-md font-bold uppercase tracking-widest text-sm transition-all hover:bg-oath-surface flex items-center justify-center gap-2 group"
             >
-              Read Prologue
-              <BookOpen className="w-4 h-4" />
+              The Map
+              <MapIcon className="w-4 h-4 group-hover:rotate-12 transition-transform" />
             </button>
           </div>
           
-          <button 
-            onClick={onExploreLore}
-            className="text-oath-gold text-xs tracking-[0.3em] font-bold uppercase flex items-center gap-3 hover:gap-5 transition-all w-fit"
-          >
-            Explore the Dossier Archive
-            <ArrowRight className="w-4 h-4" />
-          </button>
+          <div className="flex flex-wrap gap-6 pt-4">
+            <button 
+              onClick={onOpenPrologue}
+              className="text-oath-text hover:text-oath-gold text-xs tracking-[0.2em] font-bold uppercase flex items-center gap-2 transition-all"
+            >
+              <BookOpen className="w-4 h-4" />
+              Read Prologue
+            </button>
+            <button 
+              onClick={onExploreLore}
+              className="text-oath-gold text-xs tracking-[0.3em] font-bold uppercase flex items-center gap-3 hover:gap-5 transition-all w-fit"
+            >
+              Explore the Dossier Archive
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
         {/* Right Column: Featured Image */}

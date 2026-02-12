@@ -33,10 +33,10 @@ interface KeysSectionProps {
 
 const KeysSection: React.FC<KeysSectionProps> = ({ onSelectLore }) => {
   return (
-    <section id="keys" className="space-y-16">
+    <section id="map" className="space-y-16">
       <div className="text-center space-y-4">
         <h2 className="text-3xl lg:text-4xl font-serif text-oath-gold tracking-wide uppercase">
-          Keys to the Kingdom
+          Map of the Kingdom
         </h2>
         <div className="w-24 h-1 bg-oath-crimson mx-auto rounded-full" />
       </div>

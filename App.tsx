@@ -14,6 +14,7 @@ import PrologueSubpage from './components/PrologueSubpage';
 import LoreArchiveSubpage from './components/LoreArchiveSubpage';
 import JourneyHubSubpage from './components/JourneyHubSubpage';
 import CastHubSubpage from './components/CastHubSubpage';
+import MapHubSubpage from './components/MapHubSubpage';
 
 const App: React.FC = () => {
   const [selectedCharacterId, setSelectedCharacterId] = useState<string | null>(null);
@@ -23,6 +24,7 @@ const App: React.FC = () => {
   const [selectedArchiveKey, setSelectedArchiveKey] = useState<string | null>(null);
   const [isJourneyHubVisible, setIsJourneyHubVisible] = useState(false);
   const [isCastHubVisible, setIsCastHubVisible] = useState(false);
+  const [isMapHubVisible, setIsMapHubVisible] = useState(false);
 
   // Sync hash with state for deep linking
   useEffect(() => {
@@ -37,8 +39,11 @@ const App: React.FC = () => {
       setSelectedArchiveKey(null);
       setIsJourneyHubVisible(false);
       setIsCastHubVisible(false);
+      setIsMapHubVisible(false);
 
-      if (hash === '#/cast') {
+      if (hash === '#/map') {
+        setIsMapHubVisible(true);
+      } else if (hash === '#/cast') {
         setIsCastHubVisible(true);
       } else if (hash.startsWith('#/cast/')) {
         setSelectedCharacterId(hash.replace('#/cast/', ''));
@@ -94,8 +99,13 @@ const App: React.FC = () => {
     window.location.hash = `#/cast`;
   };
 
+  const handleOpenMapHub = () => {
+    window.location.hash = `#/map`;
+  };
+
   // Render Strategy: Conditional rendering based on high-level navigation state
   const renderSubpage = () => {
+    if (isMapHubVisible) return <MapHubSubpage onBack={handleBackToLanding} />;
     if (selectedArchiveKey) return <LoreArchiveSubpage loreId={selectedArchiveKey} onBack={handleBackToLanding} />;
     if (isPrologueVisible) return <PrologueSubpage onBack={handleBackToLanding} />;
     if (isJourneyHubVisible) return <JourneyHubSubpage onBack={handleBackToLanding} onSelectEvent={handleSelectJourney} />;
@@ -131,6 +141,7 @@ const App: React.FC = () => {
         <Navbar 
           onNavigateJourney={handleOpenJourneyHub} 
           onNavigateCast={handleOpenCastHub}
+          onNavigateMap={handleOpenMapHub}
         />
         
         <main>
@@ -138,6 +149,7 @@ const App: React.FC = () => {
             onOpenPrologue={handleOpenPrologue} 
             onExploreLore={handleExploreLore} 
             onViewJourney={handleOpenJourneyHub}
+            onViewMap={handleOpenMapHub}
           />
           
           <div className="max-w-7xl mx-auto px-6 lg:px-12 space-y-32 lg:space-y-48 py-24">

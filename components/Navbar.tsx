@@ -5,9 +5,10 @@ import { Shield } from 'lucide-react';
 interface NavbarProps {
   onNavigateJourney?: () => void;
   onNavigateCast?: () => void;
+  onNavigateMap?: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onNavigateJourney, onNavigateCast }) => {
+const Navbar: React.FC<NavbarProps> = ({ onNavigateJourney, onNavigateCast, onNavigateMap }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -45,7 +46,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateJourney, onNavigateCast }) =>
           >
             The Cast
           </button>
-          <a href="#keys" className="text-xs tracking-widest text-oath-text/70 hover:text-oath-gold uppercase transition-colors">The Lore</a>
+          <button 
+            onClick={() => onNavigateMap ? onNavigateMap() : window.location.hash = '#/map'}
+            className="text-xs tracking-widest text-oath-text/70 hover:text-oath-gold uppercase transition-colors"
+          >
+            The Map
+          </button>
         </div>
 
         {/* Right: CTA */}
